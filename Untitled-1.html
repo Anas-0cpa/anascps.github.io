@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Valentine’s Day 💘</title>
+  <meta name="description" content="A cute Happy Valentine’s Day page." />
+  <style>
+    :root{
+      --bg1:#ff5f8f;
+      --bg2:#ffb3c7;
+      --card:#ffffff;
+      --text:#2b2b2b;
+      --accent:#ff2d6f;
+      --accent2:#7c3aed;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      overflow-x:hidden;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(255,255,255,.35), transparent 55%),
+                  radial-gradient(900px 600px at 80% 20%, rgba(255,255,255,.25), transparent 60%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 14px;
+      position:relative;
+    }
+
+    /* Floating hearts background */
+    .hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      width:18px;
+      height:18px;
+      transform: rotate(45deg);
+      opacity:.9;
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.12));
+    }
+    .heart::before,
+    .heart::after{
+      content:"";
+      position:absolute;
+      width:18px;
+      height:18px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+    .heart{
+      background: currentColor;
+    }
+    .heart::before{ left:-9px; top:0; }
+    .heart::after{ left:0; top:-9px; }
+
+    @keyframes floatUp{
+      from{ transform: translateY(110vh) rotate(45deg) scale(var(--s)); }
+      to  { transform: translateY(-20vh) rotate(45deg) scale(var(--s)); }
+    }
+
+    /* Main card */
+    .wrap{
+      width:min(820px, 100%);
+      z-index:1;
+      position:relative;
+    }
+    .card{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .topbar{
+      padding: 22px 22px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,45,111,.10);
+      border: 1px solid rgba(255,45,111,.22);
+      font-weight: 700;
+      letter-spacing:.2px;
+    }
+    .badge .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(255,45,111,.18);
+    }
+
+    .content{
+      padding: 18px 22px 26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+    @media (max-width: 760px){
+      .content{ grid-template-columns: 1fr; }
+    }
+
+    h1{
+      margin: 8px 0 8px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 14px;
+      opacity:.92;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 14px 0 18px;
+    }
+    .pill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(124,58,237,.10);
+      border: 1px solid rgba(124,58,237,.18);
+      font-weight:600;
+      font-size: 13px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    button{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      letter-spacing:.2px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--accent), #ff7aa2);
+      color:white;
+      box-shadow: 0 14px 30px rgba(255,45,111,.30);
+    }
+    .btnPrimary:hover{ transform: translateY(-2px); box-shadow: 0 18px 36px rgba(255,45,111,.38); }
+    .btnGhost{
+      background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .btnGhost:hover{ transform: translateY(-2px); }
+
+    .note{
+      font-size: 12.5px;
+      opacity:.75;
+      margin-top: 10px;
+    }
+
+    /* Right panel */
+    .right{
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,45,111,.14), rgba(124,58,237,.12));
+      border: 1px solid rgba(0,0,0,.06);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .bigHeart{
+      width: 140px;
+      height: 140px;
+      margin: 8px auto 10px;
+      position:relative;
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, #ff2d6f, #ff8fb0);
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(255,45,111,.28);
+      animation: pulse 1.7s ease-in-out infinite;
+    }
+    .bigHeart::before,
+    .bigHeart::after{
+      content:"";
+      position:absolute;
+      width:140px;
+      height:140px;
+      border-radius: 50%;
+      background: inherit;
+    }
+    .bigHeart::before{ left:-70px; top:0; }
+    .bigHeart::after { left:0; top:-70px; }
+
+    @keyframes pulse{
+      0%,100%{ transform: rotate(45deg) scale(1); }
+      50%{ transform: rotate(45deg) scale(1.06); }
+    }
+
+    .right h2{
+      margin: 6px 0 6px;
+      text-align:center;
+      font-size: 18px;
+    }
+    .right p{
+      margin: 0;
+      text-align:center;
+      opacity:.88;
+      line-height:1.55;
+      font-size: 14px;
+    }
+
+    .footer{
+      padding: 16px 22px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      border-top: 1px solid rgba(0,0,0,.06);
+      font-size: 12.5px;
+      opacity:.8;
+    }
+    .footer a{ color: inherit; }
+    .tag{
+      font-weight:800;
+      opacity:.9;
+    }
+
+    /* Surprise modal */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index:5;
+    }
+    .overlay.show{ display:flex; }
+    .modal{
+      width:min(560px, 100%);
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+    }
+    .modal h3{
+      margin: 4px 0 8px;
+      font-size: 22px;
+      letter-spacing:-.3px;
+    }
+    .modal p{
+      margin: 0 0 12px;
+      line-height: 1.6;
+    }
+    .modal .row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+    .closeX{
+      position:absolute;
+      right: 12px;
+      top: 12px;
+      border:0;
+      background: rgba(0,0,0,.06);
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    /* Confetti hearts burst */
+    .burst{
+      position:fixed;
+      left:0; top:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:6;
+      overflow:hidden;
+    }
+    .spark{
+      position:absolute;
+      width:10px; height:10px;
+      transform: rotate(45deg);
+      animation: pop 900ms ease-out forwards;
+      opacity: .95;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));
+    }
+    .spark::before,.spark::after{
+      content:"";
+      position:absolute;
+      width:10px; height:10px;
+      background: currentColor;
+      border-radius:50%;
+    }
+    .spark{ background: currentColor; }
+    .spark::before{ left:-5px; top:0; }
+    .spark::after{ left:0; top:-5px; }
+
+    @keyframes pop{
+      0% { transform: translate(0,0) rotate(45deg) scale(1); opacity:1; }
+      100% { transform: translate(var(--dx), var(--dy)) rotate(45deg) scale(.6); opacity:0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Valentine card">
+      <div class="topbar">
+        <div class="badge"><span class="dot"></span> Happy Valentine’s Day</div>
+        <div style="font-weight:800; opacity:.9">💌</div>
+      </div>
+
+      <div class="content">
+        <div class="left">
+          <h1>To my favorite person 💖</h1>
+          <p class="sub">
+            Wishing you a day filled with love, laughter, and a little extra sweetness.
+            You make everything better—today and always.
+          </p>
+
+          <div class="pillRow" aria-label="cute tags">
+            <div class="pill">You’re my ❤️</div>
+            <div class="pill">Forever & always ✨</div>
+            <div class="pill">Be my Valentine 🌹</div>
+          </div>
+
+          <div class="actions">
+            <button class="btnPrimary" id="openSurprise">Open a surprise 🎁</button>
+            <button class="btnGhost" id="changeMessage">Change message 🔁</button>
+          </div>
+
+          <div class="note">
+            Tip: edit the text in the HTML to add names, dates, or an inside joke 🙂
+          </div>
+        </div>
+
+        <aside class="right">
+          <div class="bigHeart" aria-hidden="true"></div>
+          <h2>Love you tons</h2>
+          <p id="sideLine">Sending you a million hugs and a pocket full of kisses 💋</p>
+        </aside>
+      </div>
+
+      <div class="footer">
+        <div>Made with <span class="tag">💘</span> for Valentine’s Day</div>
+        <div>© <span id="year"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Surprise modal -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Surprise message">
+    <div class="modal">
+      <button class="closeX" id="closeModal" aria-label="Close">✕</button>
+      <h3>Surprise! 🥰</h3>
+      <p id="surpriseText">
+        I’m so lucky to have you. Thank you for being you—kind, funny, and unforgettable.
+      </p>
+      <div class="row">
+        <button class="btnGhost" id="copyText">Copy message</button>
+        <button class="btnPrimary" id="moreHearts">More hearts 💞</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="burst" id="burst" aria-hidden="true"></div>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Floating hearts
+    const heartsWrap = document.getElementById("hearts");
+    const colors = ["#ff2d6f","#ff6b9a","#ff8fb0","#7c3aed","#ff3d7f","#ffb3c7"];
+
+    function makeHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.color = colors[Math.floor(Math.random() * colors.length)];
+      const dur = 8 + Math.random() * 10;
+      const size = 0.7 + Math.random() * 1.5;
+      h.style.setProperty("--s", size.toFixed(2));
+      h.style.animationDuration = dur.toFixed(2) + "s";
+      h.style.opacity = (0.35 + Math.random() * 0.55).toFixed(2);
+      heartsWrap.appendChild(h);
+
+      // remove after animation
+      setTimeout(() => h.remove(), dur * 1000);
+    }
+
+    // create a gentle stream
+    for (let i = 0; i < 18; i++) setTimeout(makeHeart, i * 250);
+    setInterval(makeHeart, 450);
+
+    // Messages rotation
+    const messages = [
+      "Wishing you a day filled with love and sweet moments 💕",
+      "You’re my favorite notification 😄💘",
+      "If hugs were stars, I’d give you the whole sky ✨",
+      "You + Me = Perfect day ❤️",
+      "Happy Valentine’s Day, my love 🌹"
+    ];
+    const sideLines = [
+      "Sending you a million hugs and a pocket full of kisses 💋",
+      "You’re the best part of my day—every day ☀️",
+      "Your smile is my favorite thing 😍",
+      "I’d choose you in every lifetime ♾️",
+      "You make my heart do happy dances 💃💖"
+    ];
+
+    let idx = 0;
+    const title = document.querySelector("h1");
+    const sub = document.querySelector(".sub");
+    const sideLine = document.getElementById("sideLine");
+
+    document.getElementById("changeMessage").addEventListener("click", () => {
+      idx = (idx + 1) % messages.length;
+      title.textContent = "Happy Valentine’s Day 💘";
+      sub.textContent = messages[idx];
+      sideLine.textContent = sideLines[idx];
+      heartBurst(window.innerWidth * 0.5, window.innerHeight * 0.45, 20);
+    });
+
+    // Modal open/close
+    const overlay = document.getElementById("overlay");
+    document.getElementById("openSurprise").addEventListener("click", () => {
+      overlay.classList.add("show");
+      heartBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 28);
+    });
+
+    function closeModal(){
+      overlay.classList.remove("show");
+    }
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Copy surprise text
+    document.getElementById("copyText").addEventListener("click", async () => {
+      const text = document.getElementById("surpriseText").textContent.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("Copied! 💌");
+      }catch{
+        alert("Copy failed — you can manually select and copy the text.");
+      }
+    });
+
+    // More hearts button
+    document.getElementById("moreHearts").addEventListener("click", () => {
+      heartBurst(window.innerWidth * 0.5, window.innerHeight * 0.45, 40);
+    });
+
+    // Heart burst effect
+    const burst = document.getElementById("burst");
+    function heartBurst(x, y, count){
+      for(let i=0; i<count; i++){
+        const s = document.createElement("div");
+        s.className = "spark";
+        s.style.left = x + "px";
+        s.style.top  = y + "px";
+        s.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 40 + Math.random() * 160;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+
+        s.style.setProperty("--dx", dx.toFixed(0) + "px");
+        s.style.setProperty("--dy", dy.toFixed(0) + "px");
+        burst.appendChild(s);
+        setTimeout(() => s.remove(), 950);
+      }
+    }
+  </script>
+</body>
+</html>
